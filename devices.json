@@ -1,0 +1,21 @@
+{
+    "Blue LED":{
+      "oncommand": "./led-set.py -s on -g 18 -v",
+      "offcommand": "./led-set.py -s off -g 18 -v"
+    },
+
+    "Yellow LED":{
+      "oncommand": "./led-set.py -s on -g 17 -v",
+      "offcommand": "./led-set.py -s off -g 17 -v"
+    },
+
+    "Green LED":{
+      "oncommand": "./led-set.py -s on -g 23 -v",
+      "offcommand": "./led-set.py -s off -g 23 -v"
+    },
+
+    "Red LED":{
+      "oncommand": "./led-set.py -s on -g 22 -v",
+      "offcommand": "./led-set.py -s off -g 22 -v"
+    }
+}
