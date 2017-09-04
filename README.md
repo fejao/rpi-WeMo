@@ -40,18 +40,22 @@ The GPIO's that I'm using is:
 Feel free to use different *GPIO's*, just don't forget to update the **devices.json** file and change from:
 
 ```
-
 "<YOUR_COMMAND_NAME_HERE>":{
-  "oncommand": "./led-set.py -s on -g <YOUR_GPIO_NUMBER> -v"
-  "oncommand": "./led-set.py -s off -g <YOUR_GPIO_NUMBER> -v"
+  "oncommand": "./gpio-set.py -s on -g <YOUR_GPIO_NUMBER> -v"
+  "oncommand": "./gpio-set.py -s off -g <YOUR_GPIO_NUMBER> -v"
 }
+```
 
+The default *GPIO* is set to be use the **18**, you can change this at the **gpio-set.py** script over the *global variable* **DEFAULT_GPIO**
+
+```
+DEFAULT_GPIO = <YOUR_DeFAULT_GPIO>
 ```
 _____________________________________________
 ## 4 - Start the Server
 ```
 $ cd rpi-WeMo
-$ alexa-raspberry devices.json
+$ alexa-raspberry wemo-devices.json
 ```
 _____________________________________________
 ## 5 - Add devices to Alexa

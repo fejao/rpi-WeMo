@@ -1,0 +1,21 @@
+{
+    "Blue LED":{
+      "oncommand": "./gpio-set.py -s on -g 18 -v",
+      "offcommand": "./gpio-set.py -s off -g 18 -v"
+    },
+
+    "Yellow LED":{
+      "oncommand": "./gpio-set.py -s on -g 17 -v",
+      "offcommand": "./gpio-set.py -s off -g 17 -v"
+    },
+
+    "Green LED":{
+      "oncommand": "./gpio-set.py -s on -g 23 -v",
+      "offcommand": "./gpio-set.py -s off -g 23 -v"
+    },
+
+    "Red LED":{
+      "oncommand": "./gpio-set.py -s on -g 22 -v",
+      "offcommand": "./gpio-set.py -s off -g 22 -v"
+    }
+}

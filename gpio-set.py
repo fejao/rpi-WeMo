@@ -2,9 +2,6 @@
 import RPi.GPIO as GPIO
 import argparse
 
-# TODO: DEBUG
-import time
-
 __author__ = 'https://github.com/fejao'
 
 # Set the default inputs
