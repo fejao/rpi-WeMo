@@ -30,12 +30,23 @@ Here are the schematics that I used to set my one.
 The GPIO's that I'm using is:
 
 **17** Yellow LED
+
 **18** Blue LED
+
 **22** Red LED
+
 **23** Green LED
 
 ![Alt text](pics/GPIO_pins_output.png?raw=true "Raspberry Connections 2")
 
+Feel free to use different *GPIO's*, just don't forget to update the **devices.json** file and change from:
+
+```
+"<YOUR_COMMAND_NAME_HERE>":{
+  "oncommand": "./led-set.py -s on -g <YOUR_GPIO_NUMBER> -v"
+  "oncommand": "./led-set.py -s off -g <YOUR_GPIO_NUMBER> -v"
+}
+```
 
 ## 4 - Start the Server
 ```
