@@ -42,10 +42,12 @@ The GPIO's that I'm using is:
 Feel free to use different *GPIO's*, just don't forget to update the **devices.json** file and change from:
 
 ```
+
 "<YOUR_COMMAND_NAME_HERE>":{
   "oncommand": "./led-set.py -s on -g <YOUR_GPIO_NUMBER> -v"
   "oncommand": "./led-set.py -s off -g <YOUR_GPIO_NUMBER> -v"
 }
+
 ```
 
 ## 4 - Start the Server
