@@ -51,6 +51,23 @@ def ledOff(gpioNum):
     GPIO.output(gpioNum, GPIO.LOW)
 
 def __main__(args):
+    '''
+    Set's the GPIO number to the *high* mode
+
+    Parameters
+    ----------
+    args : argparse.Namespace(
+        color_name : string,
+        gpio_num : int,
+        set_state : string,
+        verbose : boolean
+    )
+    Arguments parsed to run the main function of the script
+
+    Returns
+    -------
+    None
+    '''
 
     if args.color_name is None:
         gpio = args.gpio_num
@@ -69,18 +86,18 @@ def __main__(args):
         else:
             print('Color not found, using color blue')
 
-    if args.set_led == 'on':
+    if args.set_state == 'on':
         ledOn(gpio)
         if args.verbose:
             print('LED GPIO %d on' % gpio)
-    elif args.set_led == 'off':
+    elif args.set_state == 'off':
         ledOff(gpio)
         if args.verbose:
             print('LED GPIO %d off' % gpio)
 
 parser = argparse.ArgumentParser(description='This is script to turn on or off LEDs from RaspberryPi GPIO.')
 parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
-parser.add_argument('-s','--set', help="Set the GPIO ('on', 'off'), default: %s" % DEFAULT_SET, default=DEFAULT_SET)
+parser.add_argument('-s','--set-state', help="Set the GPIO ('on', 'off') state, default: %s" % DEFAULT_SET, default=DEFAULT_SET)
 parser.add_argument('-g','--gpio-num', help='Number for the GPIO input, default: %s' % DEFAULT_GPIO, type=int, default=DEFAULT_GPIO)
 parser.add_argument('-c','--color-name', help="Color name: 'blue', 'green', 'red' and 'yellow'")
 args = parser.parse_args()
