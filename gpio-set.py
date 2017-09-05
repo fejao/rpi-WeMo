@@ -6,7 +6,7 @@ __author__ = 'https://github.com/fejao'
 
 # Set the default inputs
 DEFAULT_GPIO = 18
-DEFAULT_LED = 'off'
+DEFAULT_SET = 'off'
 
 # Set GPIO number for the LED's colors
 GPIO_YELLOW = 17
@@ -80,7 +80,7 @@ def __main__(args):
 
 parser = argparse.ArgumentParser(description='This is script to turn on or off LEDs from RaspberryPi GPIO.')
 parser.add_argument("-v", "--verbose", help="increase output verbosity", action="store_true")
-parser.add_argument('-s','--set-led', help="Set the LED ('on', 'off'), default: %s" % DEFAULT_LED, default=DEFAULT_LED)
+parser.add_argument('-s','--set', help="Set the GPIO ('on', 'off'), default: %s" % DEFAULT_SET, default=DEFAULT_SET)
 parser.add_argument('-g','--gpio-num', help='Number for the GPIO input, default: %s' % DEFAULT_GPIO, type=int, default=DEFAULT_GPIO)
 parser.add_argument('-c','--color-name', help="Color name: 'blue', 'green', 'red' and 'yellow'")
 args = parser.parse_args()
