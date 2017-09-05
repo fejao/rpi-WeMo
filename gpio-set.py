@@ -52,7 +52,7 @@ def ledOff(gpioNum):
 
 def __main__(args):
     '''
-    Set's the GPIO number to the *high* mode
+    Main script function
 
     Parameters
     ----------

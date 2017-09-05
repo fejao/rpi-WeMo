@@ -42,8 +42,8 @@ The GPIO's that I'm using is:
 _____________________________________________
 ## 4 - Customizing
 
-The script can have such input:
 ### gpio-set.py Script
+The script can have such input:
 ```
 $ ./gpio-set.py [-h] [-v] [-s SET_LED] [-g GPIO_NUM] [-c COLOR_NAME]
 ```
@@ -54,8 +54,8 @@ With optional arguments:
   * show help message and exit
 *  **-v, --verbose**
   * increase output verbosity
-*  **-s SET_LED, --set-led SET_LED**
-  * Set the LED ('on', 'off'), default: off
+*  **-s SET, --set SET**
+  * Set the GPIO ('on', 'off'), default: off
 *  **-g GPIO_NUM, --gpio-num GPIO_NUM**
   * Number for the GPIO input, default: 18
 *  **-c COLOR_NAME, --color-name COLOR_NAME**
@@ -67,9 +67,14 @@ The default *GPIO* is set to be use the **18**, you can change this at the scrip
 DEFAULT_GPIO = <YOUR_DEFAULT_GPIO>
 ```
 
-For example to turn on the **17** GPIO you should run:
+For example to turn **on** the **17** GPIO you should run:
 ```
 $ ./gpio-set.py -s on -g 17
+```
+
+And to turn **off** the **23** GPIO you should run:
+```
+$ ./gpio-set.py -s off -g 23
 ```
 
 ### wemo-devices.json File
@@ -78,17 +83,21 @@ Feel free to use different *GPIO's*, just don't forget to update the **devices.j
 You can change the file to use your own command:
 
 ```
-"<YOUR_COMMAND_NAME_HERE>":{
-  "oncommand": "./gpio-set.py -s on -g <YOUR_GPIO_NUMBER> -v"
-  "oncommand": "./gpio-set.py -s off -g <YOUR_GPIO_NUMBER> -v"
+{
+  "<YOUR_COMMAND_NAME_HERE>":{
+    "oncommand": "./gpio-set.py -s on -g <YOUR_GPIO_NUMBER> -v"
+    "offcommand": "./gpio-set.py -s off -g <YOUR_GPIO_NUMBER> -v"
+  }
 }
 ```
 
 For example, to use the command as **Test LED** using the **22** GPIO you should use as:
 ```
-"Test LED":{
-  "oncommand": "./gpio-set.py -s on -g 22 -v"
-  "oncommand": "./gpio-set.py -s off -g 22 -v"
+{
+  "Test LED":{
+    "oncommand": "./gpio-set.py -s on -g 22 -v"
+    "offcommand": "./gpio-set.py -s off -g 22 -v"
+  }
 }
 ```
 
@@ -98,14 +107,56 @@ _____________________________________________
 $ cd rpi-WeMo
 $ alexa-raspberry wemo-devices.json
 ```
+
+### Add to startup
+You could also add it to the startup of the system creating a *systemd* file.
+
+```
+$ sudo nano /lib/systemd/system/alexawemo.service
+```
+
+Add to the **alexawemo.service** file:
+
+```
+[Unit]
+Description=Alexa Wemo emulation server for RaspberryPi
+After=network.target
+
+[Service]
+#WorkingDirectory=<LOCATION_OF_wemo-devices.json_AND_gpio-set.py_FILE>
+WorkingDirectory=/home/pi/rpi-WeMo
+ExecStart=/usr/local/bin/alexa-raspberry wemo-devices.json
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=Alexa-Raspberry
+
+[Install]
+WantedBy=multi-user.target system start
+WantedBy = multi-user.target
+```
+
+### Enable the service
+In order to use every single restart, it is needed to enable the service
+```
+$ sudo systemctl enable alexawemo.service
+```
+
+### Start the service
+```
+$ sudo systemctl start alexawemo.service
+```
 _____________________________________________
 ## 5 - Add devices to Alexa
 Just ask *Alexa* it to look for new devices, like:
+
 **Alexa, search for devices**
 
 _____________________________________________
 ## 6 - Use it
 Set the command to *Alexa*:
+
 **Alexa, turn on Blue LED**
 
 _____________________________________________
