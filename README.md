@@ -1,3 +1,5 @@
+![Alt text](pics/rpi-WeMo_Logo.png?raw=true "rpi-WeMo logo")
+
 rpi-WeMo
 ===============
 Setting up your Raspberry Pi GPIO's to be controlled with *Amazon Alexa* using the *WeMo Emulation Server*
@@ -37,7 +39,43 @@ The GPIO's that I'm using is:
 
 ![Alt text](pics/GPIO_pins_output.png?raw=true "Raspberry Connections 2")
 
+_____________________________________________
+## 4 - Customizing
+
+The script can have such input:
+### gpio-set.py Script
+```
+$ ./gpio-set.py [-h] [-v] [-s SET_LED] [-g GPIO_NUM] [-c COLOR_NAME]
+```
+
+With optional arguments:
+
+*  **-h, --help**
+  * show help message and exit
+*  **-v, --verbose**
+  * increase output verbosity
+*  **-s SET_LED, --set-led SET_LED**
+  * Set the LED ('on', 'off'), default: off
+*  **-g GPIO_NUM, --gpio-num GPIO_NUM**
+  * Number for the GPIO input, default: 18
+*  **-c COLOR_NAME, --color-name COLOR_NAME**
+  * Color name: 'blue', 'green', 'red' and 'yellow'
+
+The default *GPIO* is set to be use the **18**, you can change this at the script over the *global variable* **DEFAULT_GPIO**
+
+```
+DEFAULT_GPIO = <YOUR_DEFAULT_GPIO>
+```
+
+For example to turn on the **17** GPIO you should run:
+```
+$ ./gpio-set.py -s on -g 17
+```
+
+### wemo-devices.json File
+
 Feel free to use different *GPIO's*, just don't forget to update the **devices.json** file and change from:
+You can change the file to use your own command:
 
 ```
 "<YOUR_COMMAND_NAME_HERE>":{
@@ -46,11 +84,14 @@ Feel free to use different *GPIO's*, just don't forget to update the **devices.j
 }
 ```
 
-The default *GPIO* is set to be use the **18**, you can change this at the **gpio-set.py** script over the *global variable* **DEFAULT_GPIO**
+For example, to use the command as **Test LED** using the **22** GPIO you should use as:
+```
+"Test LED":{
+  "oncommand": "./gpio-set.py -s on -g 22 -v"
+  "oncommand": "./gpio-set.py -s off -g 22 -v"
+}
+```
 
-```
-DEFAULT_GPIO = <YOUR_DeFAULT_GPIO>
-```
 _____________________________________________
 ## 4 - Start the Server
 ```
