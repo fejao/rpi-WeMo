@@ -1,5 +1,9 @@
 ![Alt text](pics/rpi-WeMo_Logo.png?raw=true "rpi-WeMo logo")
 
+[![License GLP3](https://img.shields.io/badge/license-GPL3-red.svg)](LICENSE.md)
+[![HitCount](http://hits.dwyl.com/fejao/rpi-WeMo.svg)](http://hits.dwyl.com/fejao/rpi-WeMo)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/fejao/rpi-WeMo/issues)
+
 rpi-WeMo
 ===============
 Setting up your Raspberry Pi GPIO's to be controlled with *Amazon Alexa* using the *WeMo Emulation Server*
