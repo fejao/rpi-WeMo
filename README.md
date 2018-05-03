@@ -76,6 +76,7 @@ _____________________________________________
   ```
 
     - #### 5.1.1- Examples
+    
     For example to turn **on** the **17** GPIO you should run:
     ```
     $ ./gpio-set.py -s on -g 17
