@@ -131,8 +131,10 @@ _____________________________________________
   ```
 
   - ### 6.2- Start at Boot
-  You could also add it to the startup of the system creating a *systemd* file.
-    - #### 6.2.1- Create a systemd file
+  You could also add it to the startup of the system creating a *systemd* file.  
+
+   - #### 6.2.1- Create a systemd file
+
       Create the file
       ```
       $ sudo nano /lib/systemd/system/alexawemo.service
