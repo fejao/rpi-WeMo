@@ -58,16 +58,16 @@ _____________________________________________
 
   With optional arguments:
 
-    *  **-h, --help**
-      * show help message and exit
-    *  **-v, --verbose**
-      * increase output verbosity
-    *  **-s SET, --set SET**
-      * Set the GPIO ('on', 'off'), default: off
-    *  **-g GPIO_NUM, --gpio-num GPIO_NUM**
-      * Number for the GPIO input, default: 18
-    *  **-c COLOR_NAME, --color-name COLOR_NAME**
-      * Color name: 'blue', 'green', 'red' and 'yellow'
+  - **-h, --help**
+  	- show help message and exit
+  - **-v, --verbose**
+  	- increase output verbosity
+  - **-s SET, --set SET**
+  	- Set the GPIO ('on', 'off'), default: off
+  - **-g GPIO_NUM, --gpio-num GPIO_NUM**
+  	- Number for the GPIO input, default: 18
+  - **-c COLOR_NAME, --color-name COLOR_NAME**
+  	- Color name: 'blue', 'green', 'red' and 'yellow'
 
   The default *GPIO* is set to be use the **18**, you can change this at the script over the *global variable* **DEFAULT_GPIO**
 
@@ -75,16 +75,16 @@ _____________________________________________
   DEFAULT_GPIO = <YOUR_DEFAULT_GPIO>
   ```
 
-   - #### 5.1.1- Examples
+  - #### 5.1.1- Examples
 
-    For example to turn **on** the **17** GPIO you should run:
-    ```
-    $ ./gpio-set.py -s on -g 17
-    ```
-    And to turn **off** the **23** GPIO you should run:
-    ```
-    $ ./gpio-set.py -s off -g 23
-    ```
+  For example to turn **on** the **17** GPIO you should run:
+  ```
+  $ ./gpio-set.py -s on -g 17
+  ```
+  And to turn **off** the **23** GPIO you should run:
+  ```
+  $ ./gpio-set.py -s off -g 23
+  ```
 
   - ### 5.2- wemo-devices.json File
 
